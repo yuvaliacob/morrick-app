@@ -1,6 +1,10 @@
 import { prevButton, nextButton } from "./components/nav-button/nav-button.js";
 
-import { pagination } from "./components/nav-pagination/nav-pagination.js";
+import {
+  pagination,
+  maxPage,
+  page,
+} from "./components/nav-pagination/nav-pagination.js";
 
 import CreateCharacterCard from "./components/card/card.js";
 import { renderElement } from "./components/card/card.js";
@@ -11,15 +15,13 @@ const searchBarContainer = document.querySelector(
 );
 const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
-// const prevButton = document.querySelector('[data-js="button-prev"]');
-// const nextButton = document.querySelector('[data-js="button-next"]');
-// const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-const maxPage = 42;
-const page = 1;
 let currentPage = page;
+
 const searchQuery = "";
+
+fetchCharacters();
 
 pagination.textContent = currentPage + ` | ${maxPage}`;
 
@@ -29,61 +31,41 @@ function clearCardContainer() {
   console.log("container cleared!");
 }
 
-// THIS WORKS!!!! DO NOT DELETE!!!!!!
-// Fetching data
-// async function fetchCharacters() {
-//   clearCardContainer();
-//   try {
-//     const url = "https://rickandmortyapi.com/api/character";
-//     const page = 1;
-
-//     const response = await fetch(`${url}?page=${page}`);
-//     const data = await response.json();
-
-//     // logging stuff to check
-//     console.log(data);
-//     console.log(data.results);
-//     console.log(data.results[0]);
-//     console.log(data.results[0].image);
-
-//     data.results.forEach((card) => {
-//       const newCard = CreateCharacterCard(card);
-//       renderElement(newCard);
-//     });
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-// END OF WORKING CODE
-
 // adding event listeners to prev button
 prevButton.addEventListener("click", () => {
   console.log("GO BACK!!!");
   if (currentPage !== page) {
-    currentPage--;
+    currentPage -= 1;
   } else {
     currentPage = page;
   }
   pagination.textContent = currentPage + ` | ${maxPage}`;
+
+  fetchCharacters(currentPage);
+  console.log("We are on page: ", currentPage);
 });
 
 // adding event listener to next button
 nextButton.addEventListener("click", () => {
   console.log("NEXT!!!");
   if (currentPage < maxPage) {
-    currentPage++;
+    currentPage += 1;
   } else {
     currentPage = maxPage;
   }
   pagination.textContent = currentPage + ` | ${maxPage}`;
+
+  fetchCharacters(currentPage);
+  console.log("We are on page: ", currentPage);
 });
+
 // Fetching data + pagination
 async function fetchCharacters() {
-  const url = "https://rickandmortyapi.com/api/character";
+  const url = "https://rickandmortyapi.com/api/character?page=";
 
   clearCardContainer();
   try {
-    const response = await fetch(`${url}?page=${page}`);
+    const response = await fetch(`${url}${currentPage}`);
     const data = await response.json();
 
     // logging stuff to check
@@ -100,5 +82,3 @@ async function fetchCharacters() {
     console.error(error);
   }
 }
-
-fetchCharacters();
