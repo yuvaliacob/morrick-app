@@ -16,16 +16,15 @@ const maxPage = 1;
 const page = 1;
 const searchQuery = "";
 
+// Function to clear the container everytime data is fetched
+function clearCardContainer() {
+  cardContainer.innerHTML = " ";
+  console.log("container cleared!");
+}
+
 // Fetching data
-// export function Card(characterData) {
-// const card = document.createElement("article");
-// return card}
-
-// export function renderElement(element) {
-//   root.appendChild(element);
-// }
-
 async function fetchCharacters() {
+  clearCardContainer();
   try {
     const response = await fetch("https://rickandmortyapi.com/api/character");
     const data = await response.json();
@@ -42,20 +41,5 @@ async function fetchCharacters() {
     console.error(error);
   }
 }
-
-// cardContainer.append(newCard);
-//       function renderElement(element) {
-//         cardContainer.appendChild(element);
-//       }
-
-//     data.results.forEach((characterData) => {
-//       const newCard = CreateCharacterCard(characterData);
-//       renderElement(newCard);
-//     });
-// }
-//  catch (error) {
-//     console.log("error");
-//   }
-// }
 
 fetchCharacters();
