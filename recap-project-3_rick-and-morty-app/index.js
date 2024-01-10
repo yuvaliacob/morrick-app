@@ -26,7 +26,9 @@ function clearCardContainer() {
 async function fetchCharacters() {
   clearCardContainer();
   try {
-    const response = await fetch("https://rickandmortyapi.com/api/character");
+    const url = "https://rickandmortyapi.com/api/character";
+    const page = 1;
+    const response = await fetch(`${url}?page=${page}`);
     const data = await response.json();
     console.log(data);
     console.log(data.results);
