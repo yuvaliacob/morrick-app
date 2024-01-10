@@ -1,5 +1,7 @@
 import { prevButton, nextButton } from "./components/nav-button/nav-button.js";
 
+import { pagination } from "./components/nav-pagination/nav-pagination.js";
+
 import CreateCharacterCard from "./components/card/card.js";
 import { renderElement } from "./components/card/card.js";
 
@@ -11,12 +13,15 @@ const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
 // const prevButton = document.querySelector('[data-js="button-prev"]');
 // const nextButton = document.querySelector('[data-js="button-next"]');
-const pagination = document.querySelector('[data-js="pagination"]');
+// const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
-const maxPage = 1;
+const maxPage = 42;
 const page = 1;
+let currentPage = page;
 const searchQuery = "";
+
+pagination.textContent = currentPage + ` | ${maxPage}`;
 
 // Function to clear the container everytime data is fetched
 function clearCardContainer() {
@@ -51,18 +56,30 @@ function clearCardContainer() {
 // }
 // END OF WORKING CODE
 
-// adding event listeners to buttons
+// adding event listeners to prev button
 prevButton.addEventListener("click", () => {
   console.log("GO BACK!!!");
-});
-nextButton.addEventListener("click", () => {
-  console.log("NEXT!!!");
+  if (currentPage !== page) {
+    currentPage--;
+  } else {
+    currentPage = page;
+  }
+  pagination.textContent = currentPage + ` | ${maxPage}`;
 });
 
+// adding event listener to next button
+nextButton.addEventListener("click", () => {
+  console.log("NEXT!!!");
+  if (currentPage < maxPage) {
+    currentPage++;
+  } else {
+    currentPage = maxPage;
+  }
+  pagination.textContent = currentPage + ` | ${maxPage}`;
+});
 // Fetching data + pagination
 async function fetchCharacters() {
   const url = "https://rickandmortyapi.com/api/character";
-  const page = 1;
 
   clearCardContainer();
   try {
