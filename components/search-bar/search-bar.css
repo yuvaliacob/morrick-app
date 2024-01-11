@@ -1,5 +1,5 @@
 .search-bar-container {
-  width: 300px;
+  width: 350px;
 }
 
 .search-bar {
@@ -10,6 +10,7 @@
 
   margin-top: -10px;
   border-radius: 1rem;
+  box-shadow: var(--color-black) 0 1px 30px;
 }
 
 .search-bar__input {
