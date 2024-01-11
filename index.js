@@ -17,6 +17,8 @@ import {
   searchBarContainer,
   searchBar,
   searchButton,
+  searchInput,
+  searchIcon,
 } from "./components/search-bar/search-bar.js";
 
 /*
@@ -36,6 +38,9 @@ let searchQuery = "";
 // CORE
 
 navigation.append(prevButton, pagination, nextButton);
+searchBarContainer.append(searchBar);
+searchBar.append(searchInput, searchButton);
+searchButton.append(searchIcon);
 
 fetchCharacters();
 

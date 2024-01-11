@@ -1,7 +1,17 @@
-export const searchBarContainer = document.querySelector(
-  '[data-js="search-bar-container"]'
-);
+export const searchBarContainer = document.createElement("div");
+searchBarContainer.classList.add("search-bar-container");
 
-export const searchBar = document.querySelector('[data-js="search-bar"]');
+export const searchBar = document.createElement("form");
+searchBar.classList.add("search-bar");
 
-export const searchButton = document.querySelector('[data-js="search-button"]');
+export const searchInput = document.createElement("input");
+searchInput.classList.add("search-bar__input");
+searchInput.name = "query";
+searchInput.type = "text";
+searchInput.placeholder = "browse universe";
+
+export const searchButton = document.createElement("button");
+searchButton.classList.add("search-bar__button");
+
+export const searchIcon = document.createElement("img");
+searchButton.classList.add("search-bar__icon");

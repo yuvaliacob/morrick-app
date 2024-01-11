@@ -10,17 +10,15 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <!-- HEADER -->
 
-  <!-- HEADER -->
-
-  <header class="title">
-    <!-- <h1>Rick and More</h1> -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rick_and_Morty.svg/1600px-Rick_and_Morty.svg.png" alt="Rick and Morty Logo">
-  
-  </header>
-
-  <main>
-
+    <header class="title">
+      <!-- <h1>Rick and More</h1> -->
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rick_and_Morty.svg/1600px-Rick_and_Morty.svg.png"
+        alt="Rick and Morty Logo"
+      />
+    </header>
     <main>
       <div class="search-bar-container" data-js="search-bar-container">
         <form action="" class="search-bar" data-js="search-bar">
@@ -31,7 +29,12 @@
             placeholder="search characters"
             aria-label="character name"
           />
-          <button type="submit" class="search-bar__button" aria-label="search for character" data-js="search-button">
+          <button
+            type="submit"
+            class="search-bar__button"
+            aria-label="search for character"
+            data-js="search-button"
+          >
             <img
               class="search-bar__icon"
               src="assets/magnifying-glass.png"
@@ -42,11 +45,7 @@
       </div>
       <ul data-js="card-container"></ul>
     </main>
-    <nav class="navigation" data-js="navigation">
-      <!-- <button data-js="button-prev">previous</button>
-      <span data-js="pagination"></span>
-      <button class="button button--next" data-js="button-next">next</button> -->
-    </nav>
+    <nav class="navigation" data-js="navigation"></nav>
   </body>
   <script type="module" src="./index.js"></script>
 </html>
