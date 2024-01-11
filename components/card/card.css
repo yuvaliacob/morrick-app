@@ -1,5 +1,5 @@
-.card-container {
-  margin-bottom: 320px;
+.caxrd-container {
+  /* margin-bottom: 320px; */
 }
 .card {
   width: 300px;
@@ -9,7 +9,7 @@
   /* border: 3px solid black; */
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: greenyellow 0 1px 80px;
+  box-shadow: greenyellow 0 1px 30px;
 }
 
 .card__info {
