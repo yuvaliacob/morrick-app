@@ -19,14 +19,49 @@ body {
   font-family: var(--font-family);
   color: var(--color-primary);
   padding: 20px;
+
+  background-image: url("https://wallpapers.com/images/hd/rick-and-morty-looking-at-the-night-sky-tr8wxryct280wstz.webp");
+  background-repeat: no-repeat;
+  /* background-position: center top -85px; */
+  background-position: center top -50px;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 main {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: center;
 }
 
+/* HEADER */
+
 .title {
-  padding: 10px 0;
+  display: flex;
+  position: fixed;
+  /* background: var(--color-secondary); */
+  color: transparent;
+  height: 120px;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px; */
+  /* box-shadow: white 0 1px 80px; */
+
+  top: 0;
+  left: 0;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  background-image: url("https://wallpapers.com/images/hd/rick-and-morty-looking-at-the-night-sky-tr8wxryct280wstz.webp");
+  background-repeat: no-repeat;
+  /* background-position: center top -85px; */
+  background-position: center top -50px;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.title img {
+  max-width: 350px;
+  /* height: auto; */
 }
