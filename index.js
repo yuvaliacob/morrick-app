@@ -9,17 +9,57 @@ import {
 import CreateCharacterCard from "./components/card/card.js";
 import { renderElement } from "./components/card/card.js";
 
+import {
+  searchBarContainer,
+  searchBar,
+  searchButton,
+} from "./components/search-bar/search-bar.js";
+
 const cardContainer = document.querySelector('[data-js="card-container"]');
-const searchBarContainer = document.querySelector(
-  '[data-js="search-bar-container"]'
-);
-const searchBar = document.querySelector('[data-js="search-bar"]');
+// const searchBarContainer = document.querySelector(
+//   '[data-js="search-bar-container"]'
+// );
+// const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
 
 // States
 let currentPage = page;
+// let nameInput = searchQuery;
 
-const searchQuery = "";
+let searchQuery = "";
+
+// Search Bar
+
+searchBar.addEventListener("submit", async (event) => {
+  console.log("What are you looking for?");
+
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  console.log("formData: ", formData);
+  const data = Object.fromEntries(formData);
+  console.log("Data: ", data);
+
+  const formElements = event.target.elements;
+
+  console.log("You looked for: ", formElements.query.value);
+
+  searchQuery = formElements.query.value;
+  const url = "https://rickandmortyapi.com/api/character?name=";
+
+  clearCardContainer();
+  try {
+    const response = await fetch(`${url}${searchQuery}`);
+    const data = await response.json();
+
+    data.results.forEach((card) => {
+      const newCard = CreateCharacterCard(card);
+      renderElement(newCard);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 fetchCharacters();
 
