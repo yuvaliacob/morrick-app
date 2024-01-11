@@ -1,6 +1,7 @@
 /*
 IMPORTS
 */
+import { header, headerImage } from "./components/header/header.js";
 
 import { prevButton, nextButton } from "./components/nav-button/nav-button.js";
 
@@ -35,7 +36,12 @@ STATES
 let currentPage = page;
 let searchQuery = "";
 
+const body = document.querySelector("body");
+
 // CORE
+
+body.append(header);
+header.append(headerImage);
 
 navigation.append(prevButton, pagination, nextButton);
 searchBarContainer.append(searchBar);
