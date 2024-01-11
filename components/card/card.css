@@ -5,24 +5,30 @@
   width: 300px;
   background-color: var(--color-secondary);
 
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   border-radius: 1rem;
   overflow: hidden;
 
-  /* animation: flicker 2s infinite; */
-  /* box-shadow: var(--color-radioactive) 0 1px 60px; */
+  /* box-shadow: var(--color-radioactive) 0 1px 40px; */
 }
 
 @keyframes flicker {
   0% {
-    box-shadow: var(--color-radioactive) 0 1px 60px;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   }
-  50% {
-    box-shadow: var(--color-black) 0 1px 60px;
+  40% {
+    box-shadow: 0 1px 40px var(--color-radioactive);
+  }
+  60% {
+    box-shadow: 0 1px 40px var(--color-radioactive);
   }
   100% {
-    box-shadow: var(--color-radioactive) 0 1px 60px;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   }
+}
+
+.card.animate {
+  animation: flicker 4s infinite;
 }
 
 .card__info {
@@ -41,12 +47,4 @@
 
 li {
   list-style: none;
-}
-
-/* .flicker-animation {
-  animation: flicker 1s infinite;
-} */
-
-.card.animate {
-  animation: flicker 2s infinite;
 }
