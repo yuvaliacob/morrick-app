@@ -8,7 +8,14 @@ import {
   rmBottomImage,
 } from "./components/rm-page-bottom/rm-page-bottom.js";
 
-import { prevButton, nextButton } from "./components/nav-button/nav-button.js";
+import {
+  prevButton,
+  nextButton,
+  prevButtonIcon,
+  prevButtonIconContainer,
+  nextButtonIcon,
+  nextButtonIconContainer,
+} from "./components/nav-button/nav-button.js";
 
 import {
   pagination,
@@ -56,6 +63,11 @@ main.append(cardContainer, rmBottomImageContainer);
 rmBottomImageContainer.append(rmBottomImage);
 
 nav.append(prevButton, pagination, nextButton);
+prevButton.append(prevButtonIconContainer);
+prevButtonIconContainer.append(prevButtonIcon);
+
+nextButton.append(nextButtonIconContainer);
+nextButtonIconContainer.append(nextButtonIcon);
 
 fetchCharacters();
 
