@@ -3,23 +3,36 @@
   background-color: var(--color-black);
   color: var(--color-secondary);
   transition: all 0.5s ease-out;
-
-  background-image: url("./assets/arrow-left.png");
-  background-size: contain;
-  background-position: center bottom 50px;
-  background-attachment: fixed;
 }
 
-.button-icon-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.arrow {
-  height: 20px;
-}
-
-.button:hover {
+/* .button:hover {
   background-color: var(--color-primary);
+} */
+
+.button-prev {
+  background-image: url("/assets/arrow-left-off.png");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: center;
+}
+
+.button-prev:hover {
+  background-image: url("/assets/arrow-left.png");
+  background-repeat: no-repeat;
+  background-size: 28px;
+  background-position: center;
+}
+
+.button-next {
+  background-image: url("/assets/arrow-right-off.png");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: center;
+}
+
+.button-next:hover {
+  background-image: url("/assets/arrow-right.png");
+  background-repeat: no-repeat;
+  background-size: 28px;
+  background-position: center;
 }
