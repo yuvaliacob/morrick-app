@@ -10,28 +10,28 @@
 } */
 
 .button-prev {
-  background-image: url("/assets/arrow-left-off.png");
+  background-image: url("./assets/arrow-left-off.png");
   background-repeat: no-repeat;
   background-size: 20px;
   background-position: center;
 }
 
 .button-prev:hover {
-  background-image: url("/assets/arrow-left.png");
+  background-image: url("./assets/arrow-left.png");
   background-repeat: no-repeat;
   background-size: 28px;
   background-position: center;
 }
 
 .button-next {
-  background-image: url("/assets/arrow-right-off.png");
+  background-image: url("./assets/arrow-right-off.png");
   background-repeat: no-repeat;
   background-size: 20px;
   background-position: center;
 }
 
 .button-next:hover {
-  background-image: url("/assets/arrow-right.png");
+  background-image: url("./assets/arrow-right.png");
   background-repeat: no-repeat;
   background-size: 28px;
   background-position: center;
