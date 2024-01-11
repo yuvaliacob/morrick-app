@@ -17,6 +17,7 @@
   background-color: transparent;
   border: none;
   color: var(--color-primary);
+  font-family: "Get Schwifty";
 }
 
 .search-bar__button {
