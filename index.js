@@ -1,3 +1,13 @@
+/*
+IMPORTS
+*/
+import { header, headerImage } from "./components/header/header.js";
+
+import {
+  rmBottomImageContainer,
+  rmBottomImage,
+} from "./components/rm-page-bottom/rm-page-bottom.js";
+
 import { prevButton, nextButton } from "./components/nav-button/nav-button.js";
 
 import {
@@ -7,28 +17,90 @@ import {
 } from "./components/nav-pagination/nav-pagination.js";
 
 import CreateCharacterCard from "./components/card/card.js";
-import { renderElement } from "./components/card/card.js";
+import { cardContainer, renderElement } from "./components/card/card.js";
 
 import {
   searchBarContainer,
   searchBar,
   searchButton,
+  searchInput,
+  searchIcon,
 } from "./components/search-bar/search-bar.js";
 
-const cardContainer = document.querySelector('[data-js="card-container"]');
-// const searchBarContainer = document.querySelector(
-//   '[data-js="search-bar-container"]'
-// );
-// const searchBar = document.querySelector('[data-js="search-bar"]');
-const navigation = document.querySelector('[data-js="navigation"]');
+/*
+STATES
+*/
 
-// States
 let currentPage = page;
-// let nameInput = searchQuery;
-
 let searchQuery = "";
 
-// Search Bar
+const body = document.querySelector("body");
+const main = document.querySelector("main");
+const nav = document.createElement("nav");
+nav.classList.add("navigation");
+
+// CORE
+
+body.append(header, nav);
+header.append(headerImage, searchBarContainer);
+
+searchBarContainer.append(searchBar);
+
+searchBar.append(searchInput, searchButton, searchIcon);
+
+searchBarContainer.append(searchBar);
+searchBar.append(searchInput, searchButton);
+searchButton.append(searchIcon);
+
+main.append(cardContainer, rmBottomImageContainer);
+rmBottomImageContainer.append(rmBottomImage);
+
+nav.append(prevButton, pagination, nextButton);
+
+fetchCharacters();
+
+pagination.textContent = currentPage + ` | ${maxPage}`;
+
+// FUNCTIONS
+
+/* 
+FUNCTION TO CLEAR CARD CONTAINER
+*/
+
+function clearCardContainer() {
+  cardContainer.innerHTML = " ";
+  console.log("container cleared!");
+}
+
+/* 
+FETCHING DATA
+*/
+async function fetchCharacters() {
+  const url = "https://rickandmortyapi.com/api/character?page=";
+
+  clearCardContainer();
+  try {
+    const response = await fetch(`${url}${currentPage}`);
+    const data = await response.json();
+
+    // logging stuff to check
+    console.log(data);
+    console.log(data.results);
+    console.log(data.results[0]);
+    console.log(data.results[0].image);
+
+    data.results.forEach((card) => {
+      const newCard = CreateCharacterCard(card);
+      renderElement(newCard);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+/*
+SEARCH BAR
+*/
 
 searchBar.addEventListener("submit", async (event) => {
   console.log("What are you looking for?");
@@ -61,17 +133,10 @@ searchBar.addEventListener("submit", async (event) => {
   }
 });
 
-fetchCharacters();
+/* 
+ADDING EVENT LISTENER TO PREV BUTTON
+*/
 
-pagination.textContent = currentPage + ` | ${maxPage}`;
-
-// Function to clear the container everytime data is fetched
-function clearCardContainer() {
-  cardContainer.innerHTML = " ";
-  console.log("container cleared!");
-}
-
-// adding event listeners to prev button
 prevButton.addEventListener("click", () => {
   console.log("GO BACK!!!");
   if (currentPage !== page) {
@@ -85,7 +150,10 @@ prevButton.addEventListener("click", () => {
   console.log("We are on page: ", currentPage);
 });
 
-// adding event listener to next button
+/*
+ADDING EVENT LISTENER TO NEXT BUTTON
+*/
+
 nextButton.addEventListener("click", () => {
   console.log("NEXT!!!");
   if (currentPage < maxPage) {
@@ -98,27 +166,3 @@ nextButton.addEventListener("click", () => {
   fetchCharacters(currentPage);
   console.log("We are on page: ", currentPage);
 });
-
-// Fetching data + pagination
-async function fetchCharacters() {
-  const url = "https://rickandmortyapi.com/api/character?page=";
-
-  clearCardContainer();
-  try {
-    const response = await fetch(`${url}${currentPage}`);
-    const data = await response.json();
-
-    // logging stuff to check
-    console.log(data);
-    console.log(data.results);
-    console.log(data.results[0]);
-    console.log(data.results[0].image);
-
-    data.results.forEach((card) => {
-      const newCard = CreateCharacterCard(card);
-      renderElement(newCard);
-    });
-  } catch (error) {
-    console.error(error);
-  }
-}

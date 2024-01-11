@@ -1,5 +1,7 @@
-export const prevButton = document.querySelector('[data-js="button-prev"]');
+export const prevButton = document.createElement("button");
 prevButton.classList.add("button");
+prevButton.textContent = "prev";
 
-export const nextButton = document.querySelector('[data-js="button-next"]');
+export const nextButton = document.createElement("button");
 nextButton.classList.add("button");
+nextButton.textContent = "next";

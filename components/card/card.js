@@ -1,3 +1,5 @@
+export const cardContainer = document.createElement("ul");
+
 export default function CreateCharacterCard(characterData) {
   const card = document.createElement("li");
   card.classList.add("card");
@@ -25,7 +27,6 @@ export default function CreateCharacterCard(characterData) {
 }
 
 export function renderElement(element) {
-  const cardContainer = document.querySelector('[data-js="card-container"]');
   cardContainer.classList.add("card-container");
   cardContainer.appendChild(element);
 }
