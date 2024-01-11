@@ -178,3 +178,27 @@ nextButton.addEventListener("click", () => {
   fetchCharacters(currentPage);
   console.log("We are on page: ", currentPage);
 });
+
+// Flickering while scrolling
+// This piece of code came from Google
+//
+window.addEventListener("scroll", function () {
+  var cards = document.querySelectorAll(".card");
+  for (var i = 0; i < cards.length; i++) {
+    if (isElementInViewport(cards[i])) {
+      cards[i].classList.add("animate");
+    } else {
+      cards[i].classList.remove("animate");
+    }
+  }
+});
+function isElementInViewport(element) {
+  var rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
