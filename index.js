@@ -3,6 +3,11 @@ IMPORTS
 */
 import { header, headerImage } from "./components/header/header.js";
 
+import {
+  rmBottomImageContainer,
+  rmBottomImage,
+} from "./components/rm-page-bottom/rm-page-bottom.js";
+
 import { prevButton, nextButton } from "./components/nav-button/nav-button.js";
 
 import {
@@ -12,7 +17,7 @@ import {
 } from "./components/nav-pagination/nav-pagination.js";
 
 import CreateCharacterCard from "./components/card/card.js";
-import { renderElement } from "./components/card/card.js";
+import { cardContainer, renderElement } from "./components/card/card.js";
 
 import {
   searchBarContainer,
@@ -23,13 +28,6 @@ import {
 } from "./components/search-bar/search-bar.js";
 
 /*
-GIVEN CODE
-*/
-
-const cardContainer = document.querySelector('[data-js="card-container"]');
-const navigation = document.querySelector('[data-js="navigation"]');
-
-/*
 STATES
 */
 
@@ -37,16 +35,23 @@ let currentPage = page;
 let searchQuery = "";
 
 const body = document.querySelector("body");
+const main = document.querySelector("main");
+const nav = document.createElement("nav");
+nav.classList.add("navigation");
 
 // CORE
 
-body.append(header);
+body.append(header, nav);
 header.append(headerImage);
 
-navigation.append(prevButton, pagination, nextButton);
 searchBarContainer.append(searchBar);
 searchBar.append(searchInput, searchButton);
 searchButton.append(searchIcon);
+
+main.append(cardContainer, rmBottomImageContainer);
+rmBottomImageContainer.append(rmBottomImage);
+
+nav.append(prevButton, pagination, nextButton);
 
 fetchCharacters();
 
