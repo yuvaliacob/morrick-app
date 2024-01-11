@@ -42,7 +42,11 @@ nav.classList.add("navigation");
 // CORE
 
 body.append(header, nav);
-header.append(headerImage);
+header.append(headerImage, searchBarContainer);
+
+searchBarContainer.append(searchBar);
+
+searchBar.append(searchInput, searchButton, searchIcon);
 
 searchBarContainer.append(searchBar);
 searchBar.append(searchInput, searchButton);
