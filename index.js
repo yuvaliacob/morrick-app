@@ -33,6 +33,10 @@ STATES
 let currentPage = page;
 let searchQuery = "";
 
+// CORE
+
+navigation.append(prevButton, pagination, nextButton);
+
 fetchCharacters();
 
 pagination.textContent = currentPage + ` | ${maxPage}`;
