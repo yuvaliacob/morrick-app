@@ -17,6 +17,11 @@
   --font-family: system-ui;
 }
 
+@font-face {
+  font-family: "Get Schwifty";
+  src: url("./assets/get_schwifty.ttf") format("truetype");
+}
+
 body {
   font-family: var(--font-family);
   color: var(--color-primary);
