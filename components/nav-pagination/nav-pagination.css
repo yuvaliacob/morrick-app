@@ -7,6 +7,8 @@
   bottom: 0;
   left: 0;
   width: 100%;
+
+  box-shadow: var(--color-black) 0 1px 30px;
 }
 
 .navigation__pagination {
