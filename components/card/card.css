@@ -3,6 +3,7 @@
 }
 .card {
   width: 300px;
+  /* height: 350px; */
   background-color: var(--color-secondary);
 
   margin-bottom: 40px;
@@ -10,6 +11,7 @@
   overflow: hidden;
 
   /* box-shadow: var(--color-radioactive) 0 1px 40px; */
+  /* box-shadow: var(--color-black) inset 0 1px 5px; */
 }
 
 @keyframes flicker {
