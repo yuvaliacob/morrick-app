@@ -2,7 +2,7 @@
   border: none;
   background-color: var(--color-black);
   color: var(--color-secondary);
-  transition: all 0.5s ease-out;
+  transition: all 0.2s ease-in-out;
 }
 
 /* .button:hover {
@@ -19,7 +19,7 @@
 .button-prev:hover {
   background-image: url("https://itsthl.github.io/tina-yuval-ricky-and-morty/assets/arrow-left.png");
   background-repeat: no-repeat;
-  background-size: 28px;
+  background-size: 25px;
   background-position: center;
 }
 
@@ -33,6 +33,6 @@
 .button-next:hover {
   background-image: url("https://itsthl.github.io/tina-yuval-ricky-and-morty/assets/arrow-right.png");
   background-repeat: no-repeat;
-  background-size: 28px;
+  background-size: 25px;
   background-position: center;
 }
